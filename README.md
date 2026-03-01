@@ -36,6 +36,8 @@ ESP32 + BME280 による環境モニタリングシステム。
 | CSB | 3V3 | I2C モード固定 |
 | SDO | GND | アドレス 0x76 |
 
+![ブレッドボード配線](assets/breadboard.png)
+
 詳細は [docs/wiring.md](docs/wiring.md) を参照。
 
 ## Quick Start

@@ -26,6 +26,8 @@ GPIO21/22 は ESP32 のデフォルト I2C ピン (Arduino / ESP-IDF 標準)。
 
 ## 物理配置
 
+![ブレッドボード配線](../assets/breadboard.png)
+
 ```
 ESP32 DevKitC
   │
