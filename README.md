@@ -5,7 +5,9 @@ ESP32 + BME280 による環境モニタリングシステム。
 
 ![Grafana dashboard](assets/dashboard.png)
 
-![System architecture](docs/images/architecture.drawio.svg)
+## System Architecture
+
+![System architecture](docs/images/architecture.png)
 
 ## Prerequisites
 
