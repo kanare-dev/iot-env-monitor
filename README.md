@@ -19,6 +19,8 @@ ESP32 + BME280 による環境モニタリングシステム。
 
 ## Hardware
 
+### 使用部品
+
 | 部品 | 型番 |
 | ----- | ------ |
 | マイコン | ESP32 DevKitC (ESP-WROOM-32) |
@@ -35,6 +37,8 @@ ESP32 + BME280 による環境モニタリングシステム。
 | SCK | GPIO22 | SCL (I2C クロック) |
 | CSB | 3V3 | I2C モード固定 |
 | SDO | GND | アドレス 0x76 |
+
+### ブレッドボード配線例
 
 ![ブレッドボード配線](assets/breadboard.png)
 
