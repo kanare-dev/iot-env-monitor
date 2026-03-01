@@ -32,8 +32,8 @@
           },
           "decimals": 1,
           "mappings": [],
-          "max": 40,
-          "min": 10,
+          "max": 30,
+          "min": 16,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -550,6 +550,6 @@
   "timezone": "browser",
   "title": "Environment Monitor",
   "uid": "esp32-env-monitor",
-  "version": 2,
+  "version": 3,
   "weekStart": ""
 }
