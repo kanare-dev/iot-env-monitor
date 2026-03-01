@@ -188,7 +188,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "dark-red",
+                "color": "red",
                 "value": 0
               },
               {
@@ -561,6 +561,6 @@
   "timezone": "browser",
   "title": "Environment Monitor",
   "uid": "esp32-env-monitor",
-  "version": 4,
+  "version": 5,
   "weekStart": ""
 }
