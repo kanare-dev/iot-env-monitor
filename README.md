@@ -3,6 +3,8 @@
 ESP32 + BME280 による環境モニタリングシステム。
 温度・湿度・気圧を取得し、Prometheus + Grafana で可視化する。
 
+![Grafana dashboard](assets/dashboard.png)
+
 ```
 BME280 ──I2C──▶ ESP32 ──Wi-Fi──▶ Prometheus ──▶ Grafana
 (sensor)       (firmware)        (metrics)      (dashboard)
@@ -125,7 +127,9 @@ Temperature: 22.6 C | Humidity: 35.0 % | Pressure: 1019.6 hPa
 curl http://<ESP32のIP>/metrics
 ```
 
-### 7. インフラ起動 (Phase 4 以降)
+![Prometheus metrics endpoint](assets/metrics.png)
+
+### 7. インフラ起動
 
 ```bash
 cd infra
