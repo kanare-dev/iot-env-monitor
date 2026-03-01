@@ -21,6 +21,7 @@ float temperature = 0;
 float humidity = 0;
 float pressure = 0;
 unsigned long lastReadMs = 0;
+unsigned long badReadCount = 0;
 
 void scanI2C() {
   Serial.println("Scanning I2C bus...");
@@ -76,10 +77,29 @@ void connectWiFi() {
   Serial.printf("\nConnected! IP: %s\n\n", WiFi.localIP().toString().c_str());
 }
 
+bool isValidReading(float t, float h, float p) {
+  if (isnan(t) || isnan(h) || isnan(p)) return false;
+  if (t < -40.0f || t > 85.0f) return false;
+  if (h < 0.0f   || h > 100.0f) return false;
+  if (p < 300.0f || p > 1100.0f) return false;
+  return true;
+}
+
 void readSensor() {
-  temperature = bme.readTemperature();
-  humidity = bme.readHumidity();
-  pressure = bme.readPressure() / 100.0F;
+  float t = bme.readTemperature();
+  float h = bme.readHumidity();
+  float p = bme.readPressure() / 100.0F;
+
+  if (isValidReading(t, h, p)) {
+    temperature = t;
+    humidity = h;
+    pressure = p;
+    badReadCount = 0;
+  } else {
+    badReadCount++;
+    Serial.printf("[WARN] Bad reading discarded (t=%.1f h=%.1f p=%.1f) count=%lu\n",
+                  t, h, p, badReadCount);
+  }
 }
 
 void handleMetrics() {
@@ -95,6 +115,9 @@ void handleMetrics() {
   body += "# HELP env_pressure_hpa Atmospheric pressure in hPa\n";
   body += "# TYPE env_pressure_hpa gauge\n";
   body += "env_pressure_hpa " + String(pressure, 2) + "\n";
+  body += "# HELP env_bad_reads_total Discarded invalid sensor readings\n";
+  body += "# TYPE env_bad_reads_total counter\n";
+  body += "env_bad_reads_total " + String(badReadCount) + "\n";
 
   server.send(200, "text/plain; charset=utf-8", body);
   Serial.println("[HTTP] GET /metrics");
