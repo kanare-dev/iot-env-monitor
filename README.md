@@ -164,23 +164,33 @@ ls /dev/cu.*
 ```plaintext
 iot-env-monitor/
 ├── README.md
+├── assets/                         # README 用画像
+│   ├── dashboard.png
+│   ├── metrics.png
+│   └── breadboard.png
 ├── docs/
-│   ├── wiring.md           # 配線構成書
-│   ├── architecture.md     # システム構成・開発フェーズ
+│   ├── wiring.md                   # 配線構成書
+│   ├── architecture.md             # システム構成・開発フェーズ
 │   └── images/
+│       └── architecture.drawio     # draw.io 構成図 (編集可)
 ├── firmware/
 │   └── esp32/
-│       ├── platformio.ini  # PlatformIO 設定 (ボード・ライブラリ定義)
+│       ├── README.md               # ファームウェア仕様・バリデーション
+│       ├── platformio.ini          # PlatformIO 設定
 │       └── src/
-│           ├── main.cpp           # ファームウェア本体
-│           ├── config.h           # Wi-Fi 設定 (gitignored)
-│           └── config.example.h   # config.h のテンプレート
+│           ├── main.cpp            # ファームウェア本体
+│           ├── config.h            # Wi-Fi / IP 設定 (gitignored)
+│           └── config.example.h    # config.h のテンプレート
 └── infra/
-    ├── docker-compose.yml  # Prometheus + Grafana
+    ├── docker-compose.yml          # Prometheus + Grafana
     ├── prometheus/
     │   └── prometheus.yml
     └── grafana/
+        ├── dashboards/
+        │   └── environment.json    # ダッシュボード定義
         └── provisioning/
+            ├── dashboards/
+            │   └── dashboards.yml
             └── datasources/
                 └── prometheus.yml
 ```
