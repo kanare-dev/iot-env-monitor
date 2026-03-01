@@ -20,8 +20,22 @@ WebServer server(HTTP_PORT);
 float temperature = 0;
 float humidity = 0;
 float pressure = 0;
+bool hasValidReading = false;
 unsigned long lastReadMs = 0;
 unsigned long badReadCount = 0;
+
+// BME280 spec range
+#define TEMP_MIN -40.0f
+#define TEMP_MAX  85.0f
+#define HUM_MIN    0.0f
+#define HUM_MAX  100.0f
+#define PRES_MIN 300.0f
+#define PRES_MAX 1100.0f
+
+// Max change per reading interval (5s) — rejects transient spikes
+#define TEMP_MAX_DELTA  5.0f
+#define HUM_MAX_DELTA  10.0f
+#define PRES_MAX_DELTA 20.0f
 
 void scanI2C() {
   Serial.println("Scanning I2C bus...");
@@ -79,9 +93,16 @@ void connectWiFi() {
 
 bool isValidReading(float t, float h, float p) {
   if (isnan(t) || isnan(h) || isnan(p)) return false;
-  if (t < -40.0f || t > 85.0f) return false;
-  if (h < 0.0f   || h > 100.0f) return false;
-  if (p < 300.0f || p > 1100.0f) return false;
+  if (t < TEMP_MIN || t > TEMP_MAX) return false;
+  if (h < HUM_MIN  || h > HUM_MAX)  return false;
+  if (p < PRES_MIN || p > PRES_MAX) return false;
+
+  if (hasValidReading) {
+    if (fabsf(t - temperature) > TEMP_MAX_DELTA) return false;
+    if (fabsf(h - humidity)    > HUM_MAX_DELTA)  return false;
+    if (fabsf(p - pressure)    > PRES_MAX_DELTA) return false;
+  }
+
   return true;
 }
 
@@ -94,6 +115,7 @@ void readSensor() {
     temperature = t;
     humidity = h;
     pressure = p;
+    hasValidReading = true;
     badReadCount = 0;
   } else {
     badReadCount++;
