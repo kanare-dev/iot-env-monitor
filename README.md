@@ -12,7 +12,7 @@ ESP32 + BME280 による環境モニタリングシステム。
 ## Prerequisites
 
 | ツール | 用途 | インストール |
-|--------|------|-------------|
+| -------- | ------ | ------------- |
 | [Python 3](https://www.python.org/) | PlatformIO 実行環境 | OS に応じて |
 | [PlatformIO CLI](https://platformio.org/) | ESP32 ビルド & 書き込み | `pip install platformio` |
 | [Docker](https://www.docker.com/) | Prometheus / Grafana 実行 | 公式サイトから |
@@ -20,15 +20,15 @@ ESP32 + BME280 による環境モニタリングシステム。
 ## Hardware
 
 | 部品 | 型番 |
-|------|------|
+| ----- | ------ |
 | マイコン | ESP32 DevKitC (ESP-WROOM-32) |
 | センサ | AE-BME280 (秋月電子) |
-| その他 | ブレッドボード、ジャンパーワイヤ (オス-オス) × 6 本、USB ケーブル |
+| その他 | ブレッドボード、ジャンパーワイヤ (オス-オス) × 適量、USB ケーブル |
 
 ### 配線 (I2C)
 
 | BME280 | ESP32 | 信号 |
-|--------|-------|------|
+| -------- | ------- | ------ |
 | VDD | 3V3 | 電源 3.3V |
 | GND | GND | グランド |
 | SDI | GPIO21 | SDA (I2C データ) |
@@ -54,14 +54,14 @@ ls /dev/cu.usb*
 
 以下のようなデバイスが表示されれば認識 OK:
 
-```
+```plaintext
 /dev/cu.usbserial-0001
 ```
 
 何も出ない場合は USB ドライバが必要です (ボード裏面のチップ型番を確認):
 
 | チップ | ドライバ | 認識されるデバイス名 |
-|--------|---------|-------------------|
+| -------- | --------- | ------------------- |
 | CP2102 | [Silicon Labs](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers) | `/dev/cu.SLAB_USBtoUART` |
 | CH340 | [WCH](http://www.wch-ic.com/downloads/CH341SER_MAC_ZIP.html) | `/dev/cu.usbserial-*` |
 
@@ -97,7 +97,7 @@ pio device monitor
 
 出力が出ない場合は ESP32 の **EN ボタン** を押してリセットしてください。正常な出力:
 
-```
+```plaintext
 === IoT Environment Monitor ===
 
 Scanning I2C bus...
@@ -159,7 +159,7 @@ ls /dev/cu.*
 
 ## Project Structure
 
-```
+```plaintext
 iot-env-monitor/
 ├── README.md
 ├── docs/
@@ -182,16 +182,3 @@ iot-env-monitor/
             └── datasources/
                 └── prometheus.yml
 ```
-
-## Roadmap
-
-- [x] ハードウェア構成設計
-- [x] 配線完了・I2C スキャン確認
-- [x] センサ値取得ファームウェア
-- [x] Wi-Fi 送信 + HTTP exporter (`/metrics`)
-- [x] Prometheus メトリクス収集
-- [x] Grafana ダッシュボード構築
-
-## License
-
-MIT
