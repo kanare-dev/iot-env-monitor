@@ -1,0 +1,9 @@
+[
+  {
+    "targets": ["172.22.1.59:80"],
+    "labels": {
+      "location": "room",
+      "device": "esp32-bme280"
+    }
+  }
+]

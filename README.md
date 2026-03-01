@@ -188,7 +188,9 @@ iot-env-monitor/
 └── infra/
     ├── docker-compose.yml          # Prometheus + Grafana
     ├── prometheus/
-    │   └── prometheus.yml
+    │   ├── prometheus.yml
+    │   └── targets/
+    │       └── esp32.json      # スクレイプ対象 (IP はここで管理)
     └── grafana/
         ├── dashboards/
         │   └── environment.json    # ダッシュボード定義
