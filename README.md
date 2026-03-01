@@ -12,16 +12,9 @@ BME280 ──I2C──▶ ESP32 ──Wi-Fi──▶ Prometheus ──▶ Grafan
 
 | ツール | 用途 | インストール |
 |--------|------|-------------|
-| [uv](https://docs.astral.sh/uv/) | Python パッケージ管理 | `curl -LsSf https://astral.sh/uv/install.sh \| sh` |
-| [PlatformIO CLI](https://platformio.org/) | ESP32 ビルド & 書き込み | `uv tool install platformio` |
+| [Python 3](https://www.python.org/) | PlatformIO 実行環境 | OS に応じて |
+| [PlatformIO CLI](https://platformio.org/) | ESP32 ビルド & 書き込み | `pip install platformio` |
 | [Docker](https://www.docker.com/) | Prometheus / Grafana 実行 | 公式サイトから |
-
-> [!IMPORTANT]
-> `uv tool install platformio` の後、pip が未同梱のためビルドが失敗する場合があります。その場合は以下を実行してください:
->
-> ```bash
-> ~/.local/share/uv/tools/platformio/bin/python -m ensurepip
-> ```
 
 ## Hardware
 
@@ -49,13 +42,7 @@ BME280 ──I2C──▶ ESP32 ──Wi-Fi──▶ Prometheus ──▶ Grafan
 ### 1. PlatformIO をインストール
 
 ```bash
-uv tool install platformio
-```
-
-初回のみ、pip を PlatformIO の仮想環境に追加:
-
-```bash
-~/.local/share/uv/tools/platformio/bin/python -m ensurepip
+pip install platformio
 ```
 
 ### 2. ESP32 を USB 接続してポートを確認
@@ -149,15 +136,6 @@ docker compose up -d
 - Grafana: http://localhost:3000 (初期パスワード: `admin`)
 
 ## Troubleshooting
-
-### `No module named pip` でビルドが失敗する
-
-`uv tool install` で作られた仮想環境には pip が含まれません。
-PlatformIO の esptool が内部で pip を使うため、手動で追加が必要です:
-
-```bash
-~/.local/share/uv/tools/platformio/bin/python -m ensurepip
-```
 
 ### I2C スキャンで `0 device(s) found`
 
