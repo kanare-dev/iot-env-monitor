@@ -5,10 +5,7 @@ ESP32 + BME280 による環境モニタリングシステム。
 
 ![Grafana dashboard](assets/dashboard.png)
 
-```
-BME280 ──I2C──▶ ESP32 ──Wi-Fi──▶ Prometheus ──▶ Grafana
-(sensor)       (firmware)        (metrics)      (dashboard)
-```
+![System architecture](docs/images/architecture.drawio.svg)
 
 ## Prerequisites
 

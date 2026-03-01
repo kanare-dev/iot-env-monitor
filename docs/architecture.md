@@ -2,18 +2,7 @@
 
 ## 全体アーキテクチャ
 
-```
-┌──────────┐    I2C     ┌──────────┐   Wi-Fi/HTTP   ┌────────────┐
-│  BME280  │───────────▶│  ESP32   │───────────────▶│ Prometheus │
-│ (sensor) │            │(firmware)│                │  (metrics) │
-└──────────┘            └──────────┘                └─────┬──────┘
-                                                          │
-                                                          ▼
-                                                   ┌────────────┐
-                                                   │  Grafana   │
-                                                   │(dashboard) │
-                                                   └────────────┘
-```
+![System architecture](images/architecture.drawio.svg)
 
 ## レイヤー構成
 
