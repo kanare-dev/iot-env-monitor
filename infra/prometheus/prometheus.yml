@@ -1,0 +1,11 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: "esp32-env-monitor"
+    static_configs:
+      - targets: ["172.22.1.59:80"]
+        labels:
+          location: "room"
+          device: "esp32-bme280"

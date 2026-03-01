@@ -1,0 +1,16 @@
+# Build
+firmware/esp32/build/
+firmware/esp32/.pio/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets
+*.env
+secrets/
+firmware/esp32/src/config.h
