@@ -32,6 +32,8 @@
           },
           "decimals": 1,
           "mappings": [],
+          "max": 40,
+          "min": 10,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -44,12 +46,12 @@
                 "value": 18
               },
               {
-                "color": "yellow",
-                "value": 26
+                "color": "#EAB839",
+                "value": 25
               },
               {
                 "color": "red",
-                "value": 32
+                "value": 28
               }
             ]
           },
@@ -58,7 +60,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 9,
         "w": 8,
         "x": 0,
         "y": 0
@@ -75,9 +77,10 @@
           "fields": "",
           "values": false
         },
-        "showThresholdLabels": false,
+        "showThresholdLabels": true,
         "showThresholdMarkers": true,
-        "sizing": "auto"
+        "sizing": "auto",
+        "text": {}
       },
       "pluginVersion": "12.4.0",
       "targets": [
@@ -134,7 +137,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 9,
         "w": 8,
         "x": 8,
         "y": 0
@@ -151,7 +154,7 @@
           "fields": "",
           "values": false
         },
-        "showThresholdLabels": false,
+        "showThresholdLabels": true,
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
@@ -174,7 +177,8 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "fixedColor": "blue",
+            "mode": "fixed"
           },
           "decimals": 1,
           "mappings": [],
@@ -192,7 +196,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 9,
         "w": 8,
         "x": 16,
         "y": 0
@@ -200,9 +204,9 @@
       "id": 6,
       "options": {
         "colorMode": "value",
-        "graphMode": "area",
+        "graphMode": "none",
         "justifyMode": "auto",
-        "orientation": "auto",
+        "orientation": "horizontal",
         "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
@@ -212,6 +216,7 @@
           "values": false
         },
         "showPercentChange": false,
+        "text": {},
         "textMode": "auto",
         "wideLayout": true
       },
@@ -293,7 +298,7 @@
         "h": 10,
         "w": 8,
         "x": 0,
-        "y": 8
+        "y": 9
       },
       "id": 1,
       "options": {
@@ -394,7 +399,7 @@
         "h": 10,
         "w": 8,
         "x": 8,
-        "y": 8
+        "y": 9
       },
       "id": 2,
       "options": {
@@ -493,7 +498,7 @@
         "h": 10,
         "w": 8,
         "x": 16,
-        "y": 8
+        "y": 9
       },
       "id": 3,
       "options": {
@@ -545,6 +550,6 @@
   "timezone": "browser",
   "title": "Environment Monitor",
   "uid": "esp32-env-monitor",
-  "version": 1,
+  "version": 2,
   "weekStart": ""
 }
