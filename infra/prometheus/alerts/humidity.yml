@@ -1,0 +1,17 @@
+groups:
+  - name: humidity_alerts
+    rules:
+      - alert: HumidityTooLow
+        expr: env_humidity_percent < 40
+        # Require 5 continuous minutes below threshold before firing.
+        # This filters out transient sensor noise (BME280 known spikes).
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Low humidity detected at {{ $labels.location }}"
+          description: >
+            Humidity on device {{ $labels.device }} at location
+            {{ $labels.location }} has been below 40% for more than 5 minutes.
+            Consider running a humidifier.
+          current_value: "{{ $value | printf \"%.1f\" }}"

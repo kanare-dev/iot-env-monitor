@@ -6,7 +6,10 @@ services:
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - ./prometheus/targets:/etc/prometheus/targets:ro
+      - ./prometheus/alerts:/etc/prometheus/alerts:ro
       - prometheus_data:/prometheus
+    depends_on:
+      - alertmanager
     restart: unless-stopped
 
   grafana:
@@ -23,6 +26,23 @@ services:
       - prometheus
     restart: unless-stopped
 
+  alertmanager:
+    image: prom/alertmanager:latest
+    ports:
+      - "9093:9093"
+    volumes:
+      - ./alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro
+      - alertmanager_data:/alertmanager
+    environment:
+      - SMTP_HOST=${SMTP_HOST}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_FROM=${SMTP_FROM}
+      - SMTP_USER=${SMTP_USER}
+      - SMTP_PASS=${SMTP_PASS}
+      - ALERT_TO=${ALERT_TO}
+    restart: unless-stopped
+
 volumes:
   prometheus_data:
   grafana_data:
+  alertmanager_data:
