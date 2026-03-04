@@ -7,7 +7,7 @@
 #define WIFI_PASS "your-password"
 
 // Static IP configuration (comma-separated octets)
-#define STATIC_IP    192, 168, 1, 100
-#define GATEWAY      192, 168, 1, 1
+#define STATIC_IP    192, 168, 11, 100
+#define GATEWAY      192, 168, 11, 1
 #define SUBNET       255, 255, 255, 0
-#define DNS_PRIMARY  192, 168, 1, 1
+#define DNS_PRIMARY  192, 168, 11, 1

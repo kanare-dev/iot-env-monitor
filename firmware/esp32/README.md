@@ -103,8 +103,8 @@ esp32/
 #define WIFI_SSID    "your-ssid"        // Wi-Fi SSID (2.4 GHz)
 #define WIFI_PASS    "your-password"    // Wi-Fi パスワード
 
-#define STATIC_IP    192, 168, 1, 100   // ESP32 の固定 IP
-#define GATEWAY      192, 168, 1, 1     // ゲートウェイ
-#define SUBNET       255, 255, 255, 0   // サブネットマスク
-#define DNS_PRIMARY  192, 168, 1, 1     // DNS サーバ
+#define STATIC_IP    192, 168, 11, 100   // ESP32 の固定 IP
+#define GATEWAY      192, 168, 11, 1     // ゲートウェイ
+#define SUBNET       255, 255, 255, 0    // サブネットマスク
+#define DNS_PRIMARY  192, 168, 11, 1     // DNS サーバ
 ```

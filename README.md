@@ -113,11 +113,11 @@ Scan complete: 1 device(s) found
 BME280 initialized successfully.
 
 Connecting to your-ssid..........
-Connected! IP: 192.168.1.100
+Connected! IP: 192.168.11.100
 
 HTTP server started on port 80
-  http://192.168.1.100/
-  http://192.168.1.100/metrics
+  http://192.168.11.100/
+  http://192.168.11.100/metrics
 
 Temperature: 22.6 C | Humidity: 35.0 % | Pressure: 1019.6 hPa
 ```
